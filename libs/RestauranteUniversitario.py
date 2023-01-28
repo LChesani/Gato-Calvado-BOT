@@ -34,3 +34,6 @@ class RestauranteUniversitario(commands.Cog):
             await context.channel.send('É preciso logar primeiro!');
         else:
             await botRU.agendar(context, data[idx]);
+    
+    
+    

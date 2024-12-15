@@ -1,6 +1,6 @@
 import discord;
 from discord.ext import commands;
-import youtube_dl
+import yt_dlp as youtube_dl
 import asyncio
 
 playlist = [];
@@ -39,7 +39,7 @@ class Music(commands.Cog):
         for url in playlist:
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                 info = ydl.extract_info(url, download=False)
-                song = info['formats'][0]['url']
+                song = info['url']
                 current_song = song;
             vc.play(discord.FFmpegPCMAudio(song), after=lambda e: print('done', e))
             vc.source = discord.PCMVolumeTransformer(vc.source)
